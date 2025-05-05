@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5 text-center">
+    <h1 class="display-4">Bienvenido a Mi Biblioteca</h1>
+    <p class="lead">Gestioná tus libros de forma sencilla.</p>
+
+    {% if user.is_authenticated %}
+        <div class="d-grid gap-2 d-md-block">
+            <a href="{% url 'libreria:lista_libros' %}" class="btn btn-primary mt-3">Ir a mis libros</a>
+            <a href="{% url 'accounts:profile' %}" class="btn btn-outline-info mt-3 ms-2">Editar perfil</a>
+        </div>
+    {% else %}
+        <a href="{% url 'accounts:login' %}" class="btn btn-success mt-3">Iniciar sesión</a>
+        <a href="{% url 'accounts:register' %}" class="btn btn-outline-secondary mt-3">Registrarse</a>
+    {% endif %}
+</div>
+{% endblock %}
